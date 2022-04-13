@@ -1,5 +1,9 @@
 syntax = "proto3";
 
+message Identifier {
+    string value = 1;
+}
+
 message SimpleResponse {
     enum Status {
         OK = 0;

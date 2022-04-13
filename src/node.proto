@@ -1,7 +1,6 @@
 syntax = "proto3";
 
-import "src/simple_response.proto";
-import "src/identifier.proto";
+import "src/common.proto";
 
 message Node {
     string name = 1;
