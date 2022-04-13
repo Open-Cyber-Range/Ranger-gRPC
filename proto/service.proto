@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package service;
+
+message Node {
+    string exerciseName = 1;
+    string nodeName = 2;
+    string templateName = 3;
+}
+
+message NodeResult {
+    string result = 1;
+}
+
+service NodeService {
+    rpc createNode(Node) returns (NodeResult);
+    rpc deleteNode(Node) returns (NodeResult);
+}
