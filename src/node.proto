@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "src/common.proto";
+
+message Node {
+    string name = 1;
+    string exerciseName = 2;
+    string templateName = 3;
+}
+
+service NodeService {
+    rpc create (Node) returns (SimpleResponse);
+    rpc delete (Identifier) returns (SimpleResponse);
+}
