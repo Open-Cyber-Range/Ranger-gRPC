@@ -1,8 +1,7 @@
 syntax = "proto3";
 
-package node_deployer;
-
-option go_package = "github.com/open-cyber-range/vmware-node-deployer/deployer-grpc";
+import "src/reply.proto";
+import "src/identifier.proto";
 
 message Node {
     string name = 1;
@@ -10,20 +9,7 @@ message Node {
     string templateName = 3;
 }
 
-message EntityId {
-    string id = 1;
-}
-
-message Reply {
-    enum Status {
-        OK = 0;
-        ERROR = 1;
-    }
-    Status status = 1;
-    string message = 2;
-}
-
 service NodeService {
     rpc create (Node) returns (Reply);
-    rpc delete (EntityId) returns (Reply);
+    rpc delete (Identifier) returns (Reply);
 }

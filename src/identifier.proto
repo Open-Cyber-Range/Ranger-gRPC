@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message Identifier {
+    string value = 1;
+}
