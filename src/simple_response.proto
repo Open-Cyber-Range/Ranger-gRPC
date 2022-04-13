@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-message Reply {
+message SimpleResponse {
     enum Status {
         OK = 0;
         ERROR = 1;

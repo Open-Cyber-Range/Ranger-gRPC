@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "src/reply.proto";
+import "src/simple_response.proto";
 import "src/identifier.proto";
 
 message Node {
@@ -10,6 +10,6 @@ message Node {
 }
 
 service NodeService {
-    rpc create (Node) returns (Reply);
-    rpc delete (Identifier) returns (Reply);
+    rpc create (Node) returns (SimpleResponse);
+    rpc delete (Identifier) returns (SimpleResponse);
 }
