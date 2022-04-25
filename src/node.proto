@@ -6,6 +6,90 @@ message Node {
     string name = 1;
     string exerciseName = 2;
     string templateName = 3;
+    Property properties = 4;
+}
+
+enum NodeType{
+    vm = 0;
+    network = 1;
+    router = 2;
+    switch = 3;
+    firewall = 4;
+    proxy = 5;
+}
+
+enum OS{
+    ubuntu = 0;
+    centos = 1;
+    windows = 2;
+    debian = 3;
+    fedora = 4;
+    kali_linux = 5;
+    comando = 6;
+    macos = 7;
+}
+
+message Property {
+    NodeType type = 1;
+    Identifier uuid = 2;
+    Address address = 3;
+    repeated string dependecies = 4;
+    OS os = 5;
+    repeated Policy policies = 6;
+    repeated Crdential crdentials = 7;
+    Flavor flavor = 8;
+}
+
+message Flavor {
+    uint32 cpu = 1;
+    uint64 ram = 2;
+}
+
+message Crdential {
+    string name = 1;
+    string password = 2;
+    string privateKey = 3;
+}
+
+enum AddressType{
+    ipv4 = 0;
+    ipv6 = 1;
+}
+
+message Address {
+    string ip = 1;
+    AddressType type = 2;
+    string cidr = 3;
+    string gateway = 4;
+    repeated string dns = 5;
+    repeated string routes = 6;
+}
+
+enum PolicyType{
+    system = 0;
+    user = 2;
+}
+
+message Policy {
+    PolicyType type = 1;
+    repeated SystemRule systemRules = 2;
+    repeated UserRule userRules = 3;
+}
+
+message SystemRule {
+    enum Direction{
+        ingress = 0;
+        egress = 1;
+    }
+    Direction direction = 1;
+    string destination = 2;
+    uint32 port = 3;
+}
+
+message UserRule {
+    string service = 1;
+    string right = 2;
+    uint32 role = 3;
 }
 
 service NodeService {
