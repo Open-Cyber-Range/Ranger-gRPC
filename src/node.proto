@@ -67,7 +67,7 @@ message Address {
 
 enum PolicyType{
     system = 0;
-    user = 2;
+    user = 1;
 }
 
 message Policy {
