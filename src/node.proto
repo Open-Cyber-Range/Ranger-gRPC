@@ -36,7 +36,7 @@ message Property {
     repeated string dependecies = 4;
     OS os = 5;
     repeated Policy policies = 6;
-    repeated Credential crdentials = 7;
+    repeated Credential credentials = 7;
     Flavor flavor = 8;
 }
 
