@@ -42,7 +42,7 @@ message Property {
 
 message Flavor {
     uint32 cpu = 1;
-    uint64 ram = 2;
+    uint32 ram = 2;
 }
 
 message Crdential {
