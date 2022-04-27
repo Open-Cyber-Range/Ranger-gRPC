@@ -9,7 +9,7 @@ message Node {
     Property properties = 4;
 }
 
-enum NodeType{
+enum NodeType {
     vm = 0;
     network = 1;
     router = 2;
@@ -18,7 +18,7 @@ enum NodeType{
     proxy = 5;
 }
 
-enum OS{
+enum OS {
     ubuntu = 0;
     centos = 1;
     windows = 2;
@@ -51,7 +51,7 @@ message Credential {
     string privateKey = 3;
 }
 
-enum AddressType{
+enum AddressType {
     ipv4 = 0;
     ipv6 = 1;
 }
@@ -65,7 +65,7 @@ message Address {
     repeated string routes = 6;
 }
 
-enum PolicyType{
+enum PolicyType {
     system = 0;
     user = 1;
 }
@@ -77,7 +77,7 @@ message Policy {
 }
 
 message SystemRule {
-    enum Direction{
+    enum Direction {
         ingress = 0;
         egress = 1;
     }
