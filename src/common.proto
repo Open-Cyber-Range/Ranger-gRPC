@@ -1,7 +1,17 @@
 syntax = "proto3";
 
 message Identifier {
-    string value = 1;
+    string uuid = 1;
+    NodeType type = 2;
+}
+
+enum NodeType{
+    vm = 0;
+    network = 1;
+    router = 2;
+    switch = 3;
+    firewall = 4;
+    proxy = 5;
 }
 
 message SimpleResponse {
