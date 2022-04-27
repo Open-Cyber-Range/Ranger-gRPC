@@ -93,6 +93,6 @@ message UserRule {
 }
 
 service NodeService {
-    rpc create (Node) returns (SimpleResponse);
+    rpc create (Node) returns (Identifier);
     rpc delete (Identifier) returns (SimpleResponse);
 }
