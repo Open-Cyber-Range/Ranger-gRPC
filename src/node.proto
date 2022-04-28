@@ -21,7 +21,7 @@ message Property {
         macos = 7;
     }
     Identifier identifier = 1;
-    Address address = 2;
+    repeated Address address = 2;
     repeated string dependecies = 3;
     OS os = 4;
     repeated Policy policies = 5;
@@ -43,16 +43,18 @@ message Credential {
 }
 
 message Address {
-    enum Type{
-        ipv4 = 0;
-        ipv6 = 1;
-    }
     string ip = 1;
-    Type type = 2;
-    string cidr = 3;
-    string gateway = 4;
-    repeated string dns = 5;
-    repeated string routes = 6;
+    oneof address {
+        IPAddress ipv4 = 2;
+        IPAddress ipv6 = 3;
+    }
+}
+
+message IPAddress {
+    string cidr = 1;
+    string gateway = 2;
+    string dns = 3;
+    string routes = 4;
 }
 
 message Policy {
