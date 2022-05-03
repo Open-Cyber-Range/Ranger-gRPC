@@ -1,7 +1,16 @@
 syntax = "proto3";
 
+message Error {
+    string message = 1;
+}
+
 message Identifier {
     string value = 1;
+}
+
+message IdenfitierResult {
+    Identifier identifier = 1;
+    Error error = 2;
 }
 
 message SimpleResponse {
