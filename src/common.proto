@@ -1,14 +1,18 @@
 syntax = "proto3";
 
+message Error {
+    string message = 1;
+}
+
 message Identifier {
     string value = 1;
 }
 
-message SimpleResponse {
-    enum Status {
-        OK = 0;
-        ERROR = 1;
-    }
-    Status status = 1;
-    string message = 2;
+message IdentifierResult {
+    Identifier identifier = 1;
+    Error error = 2;
+}
+
+message SimpleResult {
+    Error error = 1;
 }
