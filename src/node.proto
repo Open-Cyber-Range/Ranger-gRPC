@@ -10,5 +10,5 @@ message Node {
 
 service NodeService {
     rpc create (Node) returns (IdentifierResult);
-    rpc delete (Identifier) returns (SimpleResponse);
+    rpc delete (Identifier) returns (SimpleResult);
 }
