@@ -1,8 +1,7 @@
 syntax = "proto3";
 
 import "src/common.proto";
-import "google/rpc/status.proto";
-
+import "google/protobuf/empty.proto";
 message Node {
     string name = 1;
     string exerciseName = 2;
@@ -10,6 +9,6 @@ message Node {
 }
 
 service NodeService {
-    rpc create (Node) returns (Identifier, Status);
-    rpc delete (Identifier) returns (SimpleResult);
+    rpc create (Node) returns (Identifier);
+    rpc delete (Identifier) returns (google.protobuf.Empty);
 }
