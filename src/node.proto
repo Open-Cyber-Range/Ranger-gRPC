@@ -2,33 +2,40 @@ syntax = "proto3";
 
 import "src/common.proto";
 
-message Node {
+
+message DeploymentParameters {
     string name = 1;
     string exerciseName = 2;
     string templateName = 3;
-    Property properties = 4;
 }
 
-message Property {
-    enum OS{
-        ubuntu = 0;
-        centos = 1;
-        windows = 2;
-        debian = 3;
-        fedora = 4;
-        kali_linux = 5;
-        comando = 6;
-        macos = 7;
-    }
-    Identifier identifier = 1;
-    repeated Address address = 2;
-    repeated string dependecies = 3;
-    OS os = 4;
-    repeated Policy policies = 5;
-    repeated Credential credentials = 6;
+message Node {
+    NodeIdentifier identifier = 1;
     Flavor flavor = 7;
     string template = 8;
-    string source = 9;
+    repeated string dependecies = 3;
+    repeated Address address = 2;
+    repeated Policy policies = 5;
+    repeated Credential credentials = 6;
+}
+
+enum NodeType {
+    vm = 0;
+    network = 1;
+    router = 2;
+    switch = 3;
+    firewall = 4;
+    proxy = 5;
+}
+
+message NodeIdentifier {
+    Identifier identifier = 1;
+    NodeType nodeType = 2;
+}
+
+message NodeDeployment {
+    DeploymentParameters parameters = 1;
+    Node node = 2;
 }
 
 message Flavor {
@@ -84,10 +91,6 @@ message UserRule {
 }
 
 service NodeService {
-    rpc create (Node) returns (SimpleResponse){
-
-    };
-    rpc delete (Identifier) returns (SimpleResponse){
-
-    };
+    rpc create (NodeDeployment) returns (SimpleResponse) {}
+    rpc delete (Identifier) returns (SimpleResponse) {}
 }
