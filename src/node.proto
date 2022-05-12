@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "src/common.proto";
 import "google/protobuf/empty.proto";
+
 message Node {
     string name = 1;
     string exerciseName = 2;
