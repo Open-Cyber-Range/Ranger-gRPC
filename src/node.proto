@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "src/common.proto";
+import "google/protobuf/empty.proto";
 
 
 message DeploymentParameters {
@@ -91,6 +92,6 @@ message UserRule {
 }
 
 service NodeService {
-    rpc create (NodeDeployment) returns (SimpleResponse) {}
-    rpc delete (Identifier) returns (SimpleResponse) {}
+    rpc create (NodeDeployment) returns (NodeIdentifier);
+    rpc delete (NodeIdentifier) returns (google.protobuf.Empty);
 }
