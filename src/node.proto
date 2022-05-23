@@ -3,23 +3,6 @@ syntax = "proto3";
 import "src/common.proto";
 import "google/protobuf/empty.proto";
 
-
-message DeploymentParameters {
-    string name = 1;
-    string exerciseName = 2;
-    string templateName = 3;
-}
-
-message Node {
-    NodeIdentifier identifier = 1;
-    Flavor flavor = 7;
-    string template = 8;
-    repeated string dependecies = 3;
-    repeated Address address = 2;
-    repeated Policy policies = 5;
-    repeated Credential credentials = 6;
-}
-
 enum NodeType {
     vm = 0;
     network = 1;
@@ -34,61 +17,19 @@ message NodeIdentifier {
     NodeType nodeType = 2;
 }
 
+message Node {
+    NodeIdentifier identifier = 1;
+}
+
+message DeploymentParameters {
+    string name = 1;
+    string exerciseName = 2;
+    string templateName = 3;
+}
+
 message NodeDeployment {
     DeploymentParameters parameters = 1;
     Node node = 2;
-}
-
-message Flavor {
-    uint32 cpu = 1;
-    uint32 ram = 2;
-}
-
-message Credential {
-    string name = 1;
-    string password = 2;
-    string privateKey = 3;
-}
-
-message Address {
-    string ip = 1;
-    oneof address {
-        IPAddress ipv4 = 2;
-        IPAddress ipv6 = 3;
-    }
-}
-
-message IPAddress {
-    string cidr = 1;
-    string gateway = 2;
-    string dns = 3;
-    string routes = 4;
-}
-
-message Policy {
-    enum Type{
-        system = 0;
-        user = 1;
-    }
-    Type type = 1;
-    repeated SystemRule systemRules = 2;
-    repeated UserRule userRules = 3;
-}
-
-message SystemRule {
-    enum Direction{
-        ingress = 0;
-        egress = 1;
-    }
-    Direction direction = 1;
-    string destination = 2;
-    uint32 port = 3;
-}
-
-message UserRule {
-    string service = 1;
-    string right = 2;
-    uint32 role = 3;
 }
 
 service NodeService {
