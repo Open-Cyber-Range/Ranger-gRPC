@@ -5,11 +5,7 @@ import "google/protobuf/empty.proto";
 
 enum NodeType {
     vm = 0;
-    network = 1;
-    router = 2;
-    switch = 3;
-    firewall = 4;
-    proxy = 5;
+    switch = 1;
 }
 
 message NodeIdentifier {
@@ -17,8 +13,14 @@ message NodeIdentifier {
     NodeType nodeType = 2;
 }
 
+message Configuration {
+    uint32 cpu = 1;
+    uint64 ram = 2;
+}
+
 message Node {
     NodeIdentifier identifier = 1;
+    Configuration configuration = 2;
 }
 
 message DeploymentParameters {
