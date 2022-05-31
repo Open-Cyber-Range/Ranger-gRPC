@@ -11,5 +11,5 @@ message CapabilityResult {
 }
 
 service Capability {
-    rpc GetCapability (google.protobuf.Empty) returns (CapabilityResult); //names are hot garbage
+  rpc GetCapability (google.protobuf.Empty) returns (CapabilityResult);
 }
