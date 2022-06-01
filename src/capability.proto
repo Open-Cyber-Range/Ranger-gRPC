@@ -7,9 +7,9 @@ message CapabilityResult {
         Switch = 1;
         Template = 2;
     }
-    DeployerTypes type = 1;
+    repeated DeployerTypes values = 1;
 }
 
 service Capability {
-  rpc GetCapability (google.protobuf.Empty) returns (CapabilityResult);
+  rpc GetCapabilities (google.protobuf.Empty) returns (CapabilityResult);
 }
