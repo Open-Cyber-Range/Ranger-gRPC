@@ -1,7 +1,7 @@
 syntax = "proto3";
 import "google/protobuf/empty.proto";
 
-message CapabilityResult {
+message Capabilities {
     enum DeployerTypes{
         VirtualMachine = 0;
         Switch = 1;
@@ -11,5 +11,5 @@ message CapabilityResult {
 }
 
 service Capability {
-  rpc GetCapabilities (google.protobuf.Empty) returns (CapabilityResult);
+  rpc GetCapabilities (google.protobuf.Empty) returns (Capabilities);
 }
