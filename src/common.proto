@@ -7,12 +7,3 @@ message Error {
 message Identifier {
     string value = 1;
 }
-
-message IdentifierResult {
-    Identifier identifier = 1;
-    Error error = 2;
-}
-
-message SimpleResult {
-    Error error = 1;
-}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+message Capabilities {
+    enum DeployerTypes{
+        VirtualMachine = 0;
+        Switch = 1;
+        Template = 2;
+    }
+    repeated DeployerTypes values = 1;
+}
+
+service Capability {
+  rpc GetCapabilities (google.protobuf.Empty) returns (Capabilities);
+}
