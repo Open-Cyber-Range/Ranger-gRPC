@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+service TemplateService {
+  rpc create(Source) returns (Identifier);
+  rpc delete(Identifier) returns (google.protobuf.Empty);
+}

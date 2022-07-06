@@ -7,3 +7,8 @@ message Error {
 message Identifier {
     string value = 1;
 }
+
+message Source {
+    string name = 1;
+    string version = 2;
+}
