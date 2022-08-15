@@ -27,6 +27,7 @@ message DeploymentParameters {
     string name = 1;
     string exerciseName = 2;
     string templateId = 3;
+    repeated string links = 4;
 }
 
 message NodeDeployment {
