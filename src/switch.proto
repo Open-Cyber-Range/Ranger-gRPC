@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+
+message Switch {
+  string name = 1;
+  repeated string links = 2;
+}
+
+message DeploySwitch {
+    Switch switch = 1;
+    MetaInfo metaInfo = 2;
+}
+
+service SwitchService {
+    rpc create (DeploySwitch) returns (Identifier);
+    rpc delete (Identifier) returns (google.protobuf.Empty);
+}

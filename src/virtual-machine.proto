@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+
+message Configuration {
+    uint32 cpu = 1;
+    uint64 ram = 2;
+}
+
+message VirtualMachine {
+    string name = 1;
+    Configuration configuration = 2;
+    string templateId = 3;
+    repeated string links = 4;
+}
+
+message DeployVirtualMachine {
+    VirtualMachine virtualMachine = 1;
+    MetaInfo metaInfo = 2;
+}
+
+service VirtualMachineService {
+    rpc create (DeployVirtualMachine) returns (Identifier);
+    rpc delete (Identifier) returns (google.protobuf.Empty);
+}
