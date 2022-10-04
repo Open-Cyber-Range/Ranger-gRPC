@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+message Feature {
+  string name = 1;
+  string virtual_machine_id = 2;
+  string user = 3;
+  string password = 4;
+  Source source = 5;
+}
+
+service FeatureService {
+  rpc create (Feature) returns (Identifier);
+  rpc delete (Identifier) returns (google.protobuf.Empty);
+}
