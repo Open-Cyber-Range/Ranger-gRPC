@@ -12,6 +12,6 @@ message Feature {
 }
 
 service FeatureService {
-  rpc create(Feature) returns (Identifier);
-  rpc delete(Identifier) returns (google.protobuf.Empty);
+  rpc create (Feature) returns (Identifier);
+  rpc delete (Identifier) returns (google.protobuf.Empty);
 }
