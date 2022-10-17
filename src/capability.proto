@@ -6,6 +6,7 @@ message Capabilities {
         VirtualMachine = 0;
         Switch = 1;
         Template = 2;
+        Feature = 3;
     }
     repeated DeployerTypes values = 1;
 }
