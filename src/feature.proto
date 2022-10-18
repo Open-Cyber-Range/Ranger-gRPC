@@ -3,12 +3,19 @@ syntax = "proto3";
 import "src/common.proto";
 import "google/protobuf/empty.proto";
 
+enum FeatureType {
+  service = 0;
+  configuration = 1;
+  artifact = 2;
+}
+
 message Feature {
   string name = 1;
   string virtual_machine_id = 2;
   string user = 3;
   string password = 4;
-  Source source = 5;
+  FeatureType featureType = 5;
+  Source source = 6;
 }
 
 service FeatureService {
