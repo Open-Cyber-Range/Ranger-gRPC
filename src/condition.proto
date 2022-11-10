@@ -5,14 +5,14 @@ import "google/protobuf/empty.proto";
 
 
 message Condition {
-    string name = 1;
-    string virtual_machine_id = 2;
-    string user = 3;
-    Source source = 4;
-    string command = 5;
-    int32 interval = 6;
+  string name = 1;
+  string virtual_machine_id = 2;
+  string user = 3;
+  Source source = 4;
+  string command = 5;
+  int32 interval = 6;
 }
-  
+
 service ConditionService {
   rpc create (Condition) returns (Identifier);
   rpc stream (StreamRequest) returns (stream StreamResponse){};
@@ -26,4 +26,3 @@ message StreamRequest{
 message StreamResponse{
   string output = 1;
 }
-  
