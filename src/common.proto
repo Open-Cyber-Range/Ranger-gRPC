@@ -17,3 +17,7 @@ message Source {
     string name = 1;
     string version = 2;
 }
+
+message StreamResponse {
+    string output = 1;
+}

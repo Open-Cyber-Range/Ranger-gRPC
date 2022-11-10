@@ -15,14 +15,6 @@ message Condition {
 
 service ConditionService {
   rpc create (Condition) returns (Identifier);
-  rpc stream (StreamRequest) returns (stream StreamResponse){};
+  rpc stream (Identifier) returns (stream StreamResponse);
   rpc delete (Identifier) returns (google.protobuf.Empty);
-}
-
-message StreamRequest{
-  string input = 1;
-}
-
-message StreamResponse{
-  string output = 1;
 }
