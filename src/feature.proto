@@ -12,13 +12,18 @@ enum FeatureType {
 message Feature {
   string name = 1;
   string virtual_machine_id = 2;
-  string user = 3;
-  string password = 4;
-  FeatureType featureType = 5;
-  Source source = 6;
+  FeatureType featureType = 3;
+  Source source = 4;
+  string username = 5;
+  string template_id = 6;
+}
+
+message FeatureResponse {
+  Identifier identifier = 1;
+  string vm_log = 2;
 }
 
 service FeatureService {
-  rpc create (Feature) returns (Identifier);
+  rpc create (Feature) returns (FeatureResponse);
   rpc delete (Identifier) returns (google.protobuf.Empty);
 }
