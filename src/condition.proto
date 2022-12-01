@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+
+message Condition {
+  string name = 1;
+  string virtual_machine_id = 2;
+  string user = 3;
+  Source source = 4;
+  string command = 5;
+  int32 interval = 6;
+}
+
+service ConditionService {
+  rpc create (Condition) returns (Identifier);
+  rpc stream (Identifier) returns (stream ConditionStreamResponse);
+  rpc delete (Identifier) returns (google.protobuf.Empty);
+}
+
+message ConditionStreamResponse {
+  string response = 1;
+  float command_return_value = 2;
+}
