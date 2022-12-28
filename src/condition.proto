@@ -7,7 +7,7 @@ import "google/protobuf/empty.proto";
 message Condition {
   string name = 1;
   string virtual_machine_id = 2;
-  string user = 3;
+  Account account = 3;
   Source source = 4;
   string command = 5;
   int32 interval = 6;
