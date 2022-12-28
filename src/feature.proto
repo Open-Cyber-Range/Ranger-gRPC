@@ -14,8 +14,7 @@ message Feature {
   string virtual_machine_id = 2;
   FeatureType featureType = 3;
   Source source = 4;
-  string username = 5;
-  string template_id = 6;
+  Account account = 5;
 }
 
 message FeatureResponse {

@@ -3,7 +3,12 @@ syntax = "proto3";
 import "src/common.proto";
 import "google/protobuf/empty.proto";
 
+message TemplateResponse {
+  Identifier identifier = 1;
+  repeated Account accounts = 2;
+}
+
 service TemplateService {
-  rpc create(Source) returns (Identifier);
+  rpc create(Source) returns (TemplateResponse);
   rpc delete(Identifier) returns (google.protobuf.Empty);
 }
