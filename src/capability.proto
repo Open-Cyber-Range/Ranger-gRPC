@@ -7,6 +7,7 @@ message Capabilities {
         Switch = 1;
         Template = 2;
         Feature = 3;
+        Condition = 4;
     }
     repeated DeployerTypes values = 1;
 }
