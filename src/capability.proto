@@ -8,6 +8,7 @@ message Capabilities {
         Template = 2;
         Feature = 3;
         Condition = 4;
+        Inject = 5;
     }
     repeated DeployerTypes values = 1;
 }

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+message Inject {
+  string name = 1;
+  string virtual_machine_id = 2;
+  Source source = 3;
+  Account account = 4;
+  repeated string to_entities = 5;
+}
+
+service InjectService {
+  rpc create (Inject) returns (Identifier);
+  rpc delete (Identifier) returns (google.protobuf.Empty);
+}
