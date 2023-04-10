@@ -23,3 +23,8 @@ message Account {
     string password = 2;
     string private_key = 3;
 }
+
+message ExecutorResponse {
+    Identifier identifier = 1;
+    string vm_log = 2;
+}
