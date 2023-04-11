@@ -11,7 +11,8 @@ message Inject {
   repeated string to_entities = 5;
 }
 
+
 service InjectService {
-  rpc create (Inject) returns (Identifier);
+  rpc create (Inject) returns (ExecutorResponse);
   rpc delete (Identifier) returns (google.protobuf.Empty);
 }

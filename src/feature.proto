@@ -17,12 +17,7 @@ message Feature {
   Account account = 5;
 }
 
-message FeatureResponse {
-  Identifier identifier = 1;
-  string vm_log = 2;
-}
-
 service FeatureService {
-  rpc create (Feature) returns (FeatureResponse);
+  rpc create (Feature) returns (ExecutorResponse);
   rpc delete (Identifier) returns (google.protobuf.Empty);
 }
