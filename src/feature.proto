@@ -15,6 +15,7 @@ message Feature {
   FeatureType featureType = 3;
   Source source = 4;
   Account account = 5;
+  repeated string environment = 7;
 }
 
 service FeatureService {

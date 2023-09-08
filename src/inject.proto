@@ -9,6 +9,7 @@ message Inject {
   Source source = 3;
   Account account = 4;
   repeated string to_entities = 5;
+  repeated string environment = 7;
 }
 
 
