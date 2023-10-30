@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "src/common.proto";
+import "google/protobuf/empty.proto";
+
+message EventInfoIdentifier {
+  string id = 1;
+  string checksum = 2;
+}
+
+message EventStreamResponse {
+  bytes chunk = 1;
+}
+
+service EventInfoService {
+  rpc create (Source) returns (EventInfoIdentifier);
+  rpc stream (Identifier) returns (stream EventStreamResponse);
+  rpc delete (Identifier) returns (google.protobuf.Empty);
+}
