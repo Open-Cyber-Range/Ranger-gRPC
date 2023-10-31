@@ -3,9 +3,11 @@ syntax = "proto3";
 import "src/common.proto";
 import "google/protobuf/empty.proto";
 
-message EventInfoIdentifier {
+message EventCreateResponse {
   string id = 1;
   string checksum = 2;
+  string filename = 3;
+  int64 size = 4;
 }
 
 message EventStreamResponse {
@@ -13,7 +15,7 @@ message EventStreamResponse {
 }
 
 service EventInfoService {
-  rpc create (Source) returns (EventInfoIdentifier);
+  rpc create (Source) returns (EventCreateResponse);
   rpc stream (Identifier) returns (stream EventStreamResponse);
   rpc delete (Identifier) returns (google.protobuf.Empty);
 }
