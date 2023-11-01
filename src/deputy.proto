@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "src/common.proto";
+
+message GetPackagesQuery {
+  string package_type = 1;
+}
+
+message Package {
+  string name = 1;
+  string version = 2;
+  string type = 3;
+}
+
+message GetPackagesResponse {
+  repeated Package packages = 1;
+}
+
+message GetScenarioResponse {
+  string sdl = 1;
+}
+
+service DeputyQueryService {
+  rpc GetPackagesByType (GetPackagesQuery) returns (GetPackagesResponse);
+  rpc GetScenario (Source) returns (GetScenarioResponse);
+}
