@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/empty.proto";
 
 message Capabilities {
-    enum DeployerTypes{
+    enum DeployerType {
         VirtualMachine = 0;
         Switch = 1;
         Template = 2;
@@ -10,7 +10,7 @@ message Capabilities {
         Condition = 4;
         Inject = 5;
     }
-    repeated DeployerTypes values = 1;
+    repeated DeployerType values = 1;
 }
 
 service Capability {
