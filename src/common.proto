@@ -26,5 +26,6 @@ message Account {
 
 message ExecutorResponse {
     Identifier identifier = 1;
-    string vm_log = 2;
+    string stdout = 2;
+    string stderr = 3;
 }
