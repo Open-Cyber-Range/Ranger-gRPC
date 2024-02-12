@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "src/common.proto";
+import "google/protobuf/empty.proto";
 
 message GetPackagesQuery {
   string package_type = 1;
@@ -20,7 +21,21 @@ message GetScenarioResponse {
   string sdl = 1;
 }
 
+message DeputyCreateResponse {
+  string id = 1;
+  string checksum = 2;
+  string filename = 3;
+  int64 size = 4;
+}
+
+message DeputyStreamResponse {
+  bytes chunk = 1;
+}
+
 service DeputyQueryService {
   rpc GetPackagesByType (GetPackagesQuery) returns (GetPackagesResponse);
   rpc GetScenario (Source) returns (GetScenarioResponse);
+  rpc create (Source) returns (DeputyCreateResponse);
+  rpc stream (Identifier) returns (stream DeputyStreamResponse);
+  rpc delete (Identifier) returns (google.protobuf.Empty);
 }
