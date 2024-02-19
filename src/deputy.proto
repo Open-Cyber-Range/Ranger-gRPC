@@ -35,6 +35,7 @@ message DeputyStreamResponse {
 service DeputyQueryService {
   rpc GetPackagesByType (GetPackagesQuery) returns (GetPackagesResponse);
   rpc GetScenario (Source) returns (GetScenarioResponse);
+  rpc CheckPackageExists (Source) returns (google.protobuf.Empty);
   rpc create (Source) returns (DeputyCreateResponse);
   rpc stream (Identifier) returns (stream DeputyStreamResponse);
   rpc delete (Identifier) returns (google.protobuf.Empty);
