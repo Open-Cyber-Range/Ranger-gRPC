@@ -1,0 +1,41 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  MANFRED_GITHUB_TOKEN: ${{ secrets.MANFRED_GITHUB_TOKEN }}
+
+jobs:
+  sync-to-github:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ secrets.DOCKER_REGISTRY_PULL }}/ocr-base-deployment-image
+    steps:
+      - name: Install Git
+        run: |
+          if ! command -v git &> /dev/null
+          then
+            apt-get update
+            apt-get install -y git
+          fi
+
+      - name: Install Node.js
+        run: |
+          curl -sL https://deb.nodesource.com/setup_18.x | bash -
+          apt-get install -y nodejs
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Sync to GitHub
+        run: |
+          git remote remove github || echo "No remote named 'github'"
+          git remote add github https://mannyfred:$MANFRED_GITHUB_TOKEN@github.com/Open-Cyber-Range/Ranger-gRPC.git
+          git fetch --unshallow || echo "Already have full history"
+          git checkout master
+          git pull --rebase origin master
+          git push github master:main --force
